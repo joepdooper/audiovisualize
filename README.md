@@ -12,7 +12,7 @@
 Easily install **AudioVisualize** via npm.
 
 ```bash
-npm install https://github.com/joepdooper/audiovisualize
+npm i audiovisualize
 ```
 
 ## Usage
