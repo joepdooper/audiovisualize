@@ -1,0 +1,35 @@
+{
+  "name": "audiovisualize",
+  "version": "1.0.0",
+  "description": "AudioVisualize is a JavaScript module that leverages the power of the Web Audio API to visualize and analyze audio in your web applications. It provides an easy-to-use interface for loading audio, extracting audio data, and creating visualizations.",
+  "main": "audiovisualize.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joepdooper/audiovisualize.git"
+  },
+  "keywords": [
+    "music",
+    "audio",
+    "visualize",
+    "visualizer",
+    "visualization",
+    "audio visualizer",
+    "Web Audio API",
+    "frequency",
+    "analysis",
+    "processing",
+    "Fast Fourier Transform",
+    "FFT",
+    "AnalyserNode",
+    "spectrum"
+  ],
+  "author": "Joep Dooper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joepdooper/audiovisualize/issues"
+  },
+  "homepage": "https://github.com/joepdooper/audiovisualize#readme"
+}
