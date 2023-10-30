@@ -52,7 +52,7 @@ av.initialize();
 <script type="module">
 import { AudioVisualize } from './node_modules/audiovisualize/audiovisualize.js';
 
-const av = Object.create(AudioVisualizer);
+const av = Object.create(AudioVisualize);
 
 av.loading(
   'path-to-your-audio-file.mp3',
