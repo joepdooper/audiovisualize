@@ -34,8 +34,9 @@ av.loading(
     // Audio loaded callback
     console.log('Audio loaded');
   },
-  () => {
+  (event) => {
     // Progress update callback
+    console.log('Update event:', event);
   },
   () => {
     // Audio ended callback
@@ -47,6 +48,26 @@ av.loading(
 av.initialize();
 
 // Create your custom audio visualizations here
+```
+
+You can use the getFrequencies method to get the frequency data of the audio at any given moment. It returns an array of frequency values within a specified range.
+
+```javascript
+const lowFrequency = 20;  // Minimum frequency in Hz
+const highFrequency = 20000;  // Maximum frequency in Hz
+
+const frequencies = audioVisualizer.getFrequencies(lowFrequency, highFrequency); // `frequencies` is an array of frequency data.
+```
+
+If you want to get the average frequency range over the entire audio track, you can use the getAverageRange method. This method will analyze the audio frame by frame and calculate the average over the specified frequency range.
+
+```javascript
+const averageLowFrequency = 100;  // Minimum frequency in Hz
+const averageHighFrequency = 2000;  // Maximum frequency in Hz
+
+audioVisualizer.getAverageRange(averageLowFrequency, averageHighFrequency).then((average) => {
+  console.log('Average range over time:', average);
+});
 ```
 
 ## Example
