@@ -18,7 +18,7 @@ npm install https://github.com/joepdooper/audiovisualize
 ## Usage
 
 ```javascript
-import { AudioVisualize } from './node_modules/audiovisualizer/audiovisualizer.js';
+import { AudioVisualize } from './node_modules/audiovisualize/audiovisualize.js';
 
 const av = Object.create(AudioVisualize);
 
@@ -50,7 +50,7 @@ av.initialize();
 <canvas id="canvasElement"></canvas>
 
 <script type="module">
-import { AudioVisualize } from './node_modules/audiovisualizer/audiovisualizer.js';
+import { AudioVisualize } from './node_modules/audiovisualize/audiovisualize.js';
 
 const av = Object.create(AudioVisualizer);
 
