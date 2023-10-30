@@ -24,8 +24,7 @@ npm i audiovisualize
 ## Usage
 
 ```javascript
-import { AudioVisualize } from 'audiovisualize';
-
+// Create an instance of the AudioVisualize object.
 const av = Object.create(AudioVisualize);
 
 av.loading(
