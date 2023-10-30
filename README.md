@@ -23,6 +23,8 @@ npm i audiovisualize
 
 ## Usage
 
+You can create an instance of the **AudioVisualize** object and use its methods to load, analyze, and visualize audio. Use the *loading* method to load an audio file and set up event listeners for loading progress and playback events. Call the *initialize* method to set up the audio nodes for analysis.
+
 ```javascript
 // Create an instance of the AudioVisualize object.
 const av = Object.create(AudioVisualize);
