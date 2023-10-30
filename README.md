@@ -1,6 +1,6 @@
 # AudioVisualize
 
-**AudioVisualize** is a JavaScript library that leverages the power of the Web Audio API to visualize and analyze audio in your web applications. It provides an easy-to-use interface for loading audio, extracting audio data, and creating visualizations.
+**AudioVisualize** is a JavaScript module that leverages the power of the Web Audio API to visualize and analyze audio in your web applications. It provides an easy-to-use interface for loading audio, extracting audio data, and creating visualizations.
 
 ## Features
 
