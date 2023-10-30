@@ -9,10 +9,16 @@
 
 ## Installation
 
-Easily install **AudioVisualize** via npm.
+Easily install **AudioVisualize** via npm…
 
 ```bash
 npm i audiovisualize
+```
+
+…or include the script in your HTML file.
+
+```html
+<script src="https://unpkg.com/audiovisualize"></script>
 ```
 
 ## Usage
@@ -50,7 +56,7 @@ av.initialize();
 <canvas id="canvasElement"></canvas>
 
 <script type="module">
-import { AudioVisualize } from './node_modules/audiovisualize/audiovisualize.js';
+import { AudioVisualize } from 'https://unpkg.com/audiovisualize';
 
 const av = Object.create(AudioVisualize);
 
