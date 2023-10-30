@@ -58,7 +58,7 @@ You can use the getFrequencies method to get the frequency data of the audio at 
 const lowFrequency = 20;  // Minimum frequency in Hz
 const highFrequency = 20000;  // Maximum frequency in Hz
 
-const frequencies = audioVisualizer.getFrequencies(lowFrequency, highFrequency); // `frequencies` is an array of frequency data.
+const frequencies = av.getFrequencies(lowFrequency, highFrequency); // `frequencies` is an array of frequency data.
 ```
 
 If you want to get the average frequency range over the entire audio track, you can use the getAverageRange method. This method will analyze the audio frame by frame and calculate the average over the specified frequency range.
@@ -67,7 +67,7 @@ If you want to get the average frequency range over the entire audio track, you 
 const averageLowFrequency = 100;  // Minimum frequency in Hz
 const averageHighFrequency = 2000;  // Maximum frequency in Hz
 
-audioVisualizer.getAverageRange(averageLowFrequency, averageHighFrequency).then((average) => {
+av.getAverageRange(averageLowFrequency, averageHighFrequency).then((average) => {
   console.log('Average range over time:', average);
 });
 ```
