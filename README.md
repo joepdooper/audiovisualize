@@ -72,6 +72,12 @@ av.getAverageRange(averageLowFrequency, averageHighFrequency).then((average) => 
 });
 ```
 
+Adjust the frequency resolution, the FFT size, used for audio analysis. Default value is *2048*
+
+```javascript
+av.fftSize = 512;
+```
+
 ## Example
 
 ```html
