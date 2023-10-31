@@ -28,7 +28,7 @@ You can create an instance of the **AudioVisualize** object and use its methods 
 
 ```javascript
 // Create an instance of the AudioVisualize object.
-const av = Object.create(AudioVisualize);
+const av = AudioVisualize;
 
 av.loading(
   // Path to your audio file
@@ -80,7 +80,7 @@ av.getAverageRange(averageLowFrequency, averageHighFrequency).then((average) => 
 <script type="module">
 import { AudioVisualize } from 'https://unpkg.com/audiovisualize';
 
-const av = Object.create(AudioVisualize);
+const av = AudioVisualize;
 
 av.loading(
   'path-to-your-audio-file.mp3',
