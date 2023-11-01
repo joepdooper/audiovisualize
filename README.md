@@ -1,6 +1,6 @@
 # AudioVisualize
 
-**AudioVisualize** is a 2.3 kB JavaScript module that leverages the power of the Web Audio API to visualize and analyze audio in your web applications. It provides an easy-to-use interface for loading audio, extracting audio data, and creating visualizations. Check out this [example](#example) to learn how to bring your audio data to life with some simple visuals.
+**AudioVisualize** is a 2.3 kB JavaScript module that leverages the power of the Web Audio API to visualize and analyze audio in your web applications. It provides an easy-to-use interface for loading audio, extracting audio data, and creating visualizations. Check out these [examples](#examples) to learn how to bring your audio data to life with some simple visuals.
 
 
 ## Features
@@ -84,7 +84,9 @@ Retrieve the sample rate of the audio context used, providing essential informat
 console.log(av.audioContext.sampleRate);
 ```
 
-## Example
+## Examples
+
+**Example 1**
 
 ```html
 <canvas id="canvasElement"></canvas>
@@ -145,6 +147,8 @@ draw();
 
 </script>
 ```
+
+**Example 2**
 
 ```html
 <canvas id="canvasElement"></canvas>
