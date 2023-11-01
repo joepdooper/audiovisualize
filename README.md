@@ -78,6 +78,12 @@ Adjust the frequency resolution, the FFT size, used for audio analysis. Default 
 av.fftSize = 512;
 ```
 
+Retrieve the sample rate of the audio context used, providing essential information about the rate at which audio data is processed. This value can be used to ensure accurate audio analysis and visualizations in your web applications.
+
+```javascript
+console.log(av.audioContext.sampleRate);
+```
+
 ## Example
 
 ```html
@@ -129,6 +135,82 @@ function draw() {
       }
     }
     ctx.stroke();
+  }
+  // Request the next animation frame
+  requestAnimationFrame(draw);
+}
+
+// Start the animation loop
+draw();
+
+</script>
+```
+
+```html
+<canvas id="canvasElement"></canvas>
+
+<script type="module">
+import { AudioVisualize } from 'https://unpkg.com/audiovisualize';
+
+const av = AudioVisualize;
+
+av.loading(
+  'path-to-your-audio-file.mp3',
+  () => {
+    console.log('Audio duration', av.element.duration);
+    // Add the audio element to the body
+    document.body.appendChild(av.element);
+    av.element.setAttribute('controls', 'controls');
+  },
+  () => {
+    console.log('Buffered', av.element.buffered);
+    console.log('Current time', av.element.currentTime);
+  },
+  () => {
+    console.log('Audio ended', av.element.currentTime, av.element.duration);
+  }
+);
+
+av.initialize();
+
+const canvas = document.getElementById('canvasElement');
+const ctx = canvas.getContext("2d");
+
+function draw() {
+  if(!av.element.paused){
+    av.getFrequencies();
+    // Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Define frequency ranges for sub-bass, bass, mid, and treble
+    const subBassRange = [20, 60]; // Sub-bass: 20 Hz to 60 Hz
+    const bassRange = [60, 250];   // Bass: 60 Hz to 250 Hz
+    const midRange = [250, 2000];  // Mid: 250 Hz to 2 kHz
+    const trebleRange = [2000, 20000]; // Treble: 2 kHz to 20 kHz
+    // Function to draw a line for a specific frequency range
+    function drawFrequencyRange(range, color) {
+      const minBin = Math.floor(range[0] / (av.audioContext.sampleRate / av.bufferLength));
+      const maxBin = Math.floor(range[1] / (av.audioContext.sampleRate / av.bufferLength));
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let i = minBin; i <= maxBin; i++) {
+        const x = (canvas.width / (maxBin - minBin + 1)) * (i - minBin);
+        const y = canvas.height - (canvas.height * av.spectrum[i]) / 255;
+        if (i === minBin) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.stroke();
+    }
+    // Draw lines for each frequency range
+    drawFrequencyRange(subBassRange, "blue");
+    drawFrequencyRange(bassRange, "green");
+    drawFrequencyRange(midRange, "red");
+    drawFrequencyRange(trebleRange, "purple");
+
   }
   // Request the next animation frame
   requestAnimationFrame(draw);
