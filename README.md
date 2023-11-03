@@ -181,40 +181,44 @@ const canvas = document.getElementById('canvasElement');
 const ctx = canvas.getContext("2d");
 
 function draw() {
-  if(!av.element.paused){
-    av.getFrequencies();
+  if (!av.element.paused) {
+    // Calculate the average frequencies for bass, mids, and treble
+    const bassFrequency = av.getAverageBetweenFrequencies(20, 250); // Adjust the range for bass
+    const midFrequency = av.getAverageBetweenFrequencies(250, 1500); // Adjust the range for mids
+    const trebleFrequency = av.getAverageBetweenFrequencies(1500, 20000); // Adjust the range for treble
+
     // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Define frequency ranges for sub-bass, bass, mid, and treble
-    const subBassRange = [20, 60]; // Sub-bass: 20 Hz to 60 Hz
-    const bassRange = [60, 250];   // Bass: 60 Hz to 250 Hz
-    const midRange = [250, 2000];  // Mid: 250 Hz to 2 kHz
-    const trebleRange = [2000, 20000]; // Treble: 2 kHz to 20 kHz
-    // Function to draw a line for a specific frequency range
-    function drawFrequencyRange(range, color) {
-      const minBin = Math.floor(range[0] / (av.audioContext.sampleRate / av.bufferLength));
-      const maxBin = Math.floor(range[1] / (av.audioContext.sampleRate / av.bufferLength));
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      for (let i = minBin; i <= maxBin; i++) {
-        const x = (canvas.width / (maxBin - minBin + 1)) * (i - minBin);
-        const y = canvas.height - (canvas.height * av.spectrum[i]) / 255;
-        if (i === minBin) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-      }
-      ctx.stroke();
-    }
-    // Draw lines for each frequency range
-    drawFrequencyRange(subBassRange, "blue");
-    drawFrequencyRange(bassRange, "green");
-    drawFrequencyRange(midRange, "red");
-    drawFrequencyRange(trebleRange, "purple");
+    // Draw the bass line
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    const x1 = canvas.width / 4; // Position for bass
+    const y1 = canvas.height - (canvas.height * (bassFrequency / 255));
+    ctx.moveTo(x1, canvas.height);
+    ctx.lineTo(x1, y1);
+    ctx.stroke();
 
+    // Draw the mid line
+    ctx.strokeStyle = "green";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    const x2 = canvas.width / 2; // Position for mids
+    const y2 = canvas.height - (canvas.height * (midFrequency / 255));
+    ctx.moveTo(x2, canvas.height);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+
+    // Draw the treble line
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    const x3 = (canvas.width * 3) / 4; // Position for treble
+    const y3 = canvas.height - (canvas.height * (trebleFrequency / 255));
+    ctx.moveTo(x3, canvas.height);
+    ctx.lineTo(x3, y3);
+    ctx.stroke();
   }
   // Request the next animation frame
   requestAnimationFrame(draw);
