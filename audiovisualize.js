@@ -1,3 +1,5 @@
+// AudioVisualize - v1.1.0
+
 const AudioVisualize = {
   audioContext: new AudioContext(),
   element: new Audio(),
@@ -54,6 +56,19 @@ const AudioVisualize = {
       this.element.currentTime = i;
       const range = this.getFrequencies(low, high);
       total += range;
+      count++;
+    }
+    const average = total / count;
+    return average;
+  },
+  getAverageBetweenFrequencies(low, high) {
+    const minFrequencyIndex = Math.floor(low / (this.audioContext.sampleRate / this.bufferLength));
+    const maxFrequencyIndex = Math.floor(high / (this.audioContext.sampleRate / this.bufferLength));
+    this.analyserNode.getByteFrequencyData(this.spectrum);
+    let total = 0;
+    let count = 0;
+    for (let i = minFrequencyIndex; i <= maxFrequencyIndex; i++) {
+      total += this.spectrum[i];
       count++;
     }
     const average = total / count;
