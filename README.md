@@ -21,6 +21,9 @@ npm i audiovisualize
 ```html
 <script src="https://unpkg.com/audiovisualize"></script>
 ```
+```html
+<script src="https://cdn.jsdelivr.net/npm/audiovisualize@1.1.0/audiovisualize.min.js"></script>
+```
 
 ## Usage
 
