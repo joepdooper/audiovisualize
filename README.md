@@ -52,6 +52,8 @@ av.initialize();
 // Create your custom audio visualizations here
 ```
 
+When the `AudioVisualize` library is initialized, `av.element` is created as an instance of an HTML [`<audio>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio) that serves as the core component for loading, playing, and controlling audio files within a web page.
+
 You can use the getFrequencies method to get the frequency data of the audio at any given moment. It returns an array of frequency values within a specified range.
 
 ```javascript
