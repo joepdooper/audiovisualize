@@ -16,13 +16,17 @@ Easily install **AudioVisualize** via npm…
 npm i audiovisualize
 ```
 
-…or include the script in your HTML file.
+…or import the script from a CDN.
 
 ```html
-<script src="https://unpkg.com/audiovisualize"></script>
+<script type="module">
+import { AudioVisualize } from "https://unpkg.com/audiovisualize";
+</script>
 ```
 ```html
-<script src="https://cdn.jsdelivr.net/npm/audiovisualize@1.1.0/audiovisualize.min.js"></script>
+<script type="module">
+import { AudioVisualize } from "https://cdn.jsdelivr.net/npm/audiovisualize@1.1.0/audiovisualize.min.js"
+</script>
 ```
 
 ## Usage
