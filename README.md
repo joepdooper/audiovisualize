@@ -1,9 +1,9 @@
 # AudioVisualize
 
-**AudioVisualize** is a 2.8 kB JavaScript module that leverages the power of the Web Audio API to visualize and analyze audio in your web applications. It provides an easy-to-use interface for loading audio, extracting audio data, and creating visualizations. Check out these [examples](#examples) to learn how to bring your audio data to life with some simple visuals.
+**AudioVisualize** is a 3 kB JavaScript module that leverages the power of the Web Audio API to visualize and analyze audio in your web applications. It provides an easy-to-use interface for loading audio, extracting audio data, and creating visualizations. Check out these [examples](#examples) to learn how to bring your audio data to life with some simple visuals.
 
 
-## Features
+## Possibilities
 
 - **Real-time Visualization:** Create real-time visualizations of audio, including frequency spectrum analysis.
 - **Customizable:** Adjust the audio analysis parameters to focus on the aspects that matter most to your application.
@@ -25,7 +25,7 @@ import { AudioVisualize } from "https://unpkg.com/audiovisualize";
 ```
 ```html
 <script type="module">
-import { AudioVisualize } from "https://cdn.jsdelivr.net/npm/audiovisualize@1.1.0/audiovisualize.min.js"
+import { AudioVisualize } from "https://cdn.jsdelivr.net/npm/audiovisualize@1.1.1/audiovisualize.min.js"
 </script>
 ```
 
@@ -53,8 +53,6 @@ av.loading(
     console.log('Audio ended');
   }
 );
-
-av.initialize();
 
 // Create your custom audio visualizations here
 ```
@@ -122,8 +120,6 @@ av.loading(
   }
 );
 
-av.initialize();
-
 const canvas = document.getElementById('canvasElement');
 const ctx = canvas.getContext("2d");
 
@@ -183,8 +179,6 @@ av.loading(
     console.log('Audio ended', av.element.currentTime, av.element.duration);
   }
 );
-
-av.initialize();
 
 const canvas = document.getElementById('canvasElement');
 const ctx = canvas.getContext("2d");

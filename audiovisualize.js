@@ -1,4 +1,4 @@
-// AudioVisualize - v1.1.0
+// AudioVisualize - v1.1.1
 
 const AudioVisualize = {
   audioContext: new AudioContext(),
@@ -8,6 +8,7 @@ const AudioVisualize = {
   analyserNode: null,
   bufferLength: null,
   spectrum: null,
+  firstClick: true,
   loading(src, callbackLoaded, callbackUpdate, callbackEnded) {
     this.element.src = src;
     const handleLoaded = () => {
@@ -23,14 +24,22 @@ const AudioVisualize = {
     this.element.addEventListener('ended', callbackEnded);
   },
   initialize() {
-    this.sourceNode = this.audioContext.createMediaElementSource(this.element);
-    this.analyserNode = this.audioContext.createAnalyser();
-    this.analyserNode.fftSize = this.fftSize;
-    // this.sourceNode.connect(this.analyserNode);
-    this.bufferLength = this.analyserNode.frequencyBinCount;
-    this.spectrum = new Uint8Array(this.bufferLength);
+    if (!this.audioContext) {
+      this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (!this.sourceNode) {
+      this.sourceNode = this.audioContext.createMediaElementSource(this.element);
+    }
+    if (!this.analyserNode) {
+      this.analyserNode = this.audioContext.createAnalyser();
+      this.analyserNode.fftSize = this.fftSize;
+    }
+    this.sourceNode.disconnect();
+    this.analyserNode.disconnect();
     this.sourceNode.connect(this.analyserNode);
     this.analyserNode.connect(this.audioContext.destination);
+    this.bufferLength = this.analyserNode.frequencyBinCount;
+    this.spectrum = new Uint8Array(this.bufferLength);
   },
   getFrequencies(low, high) {
     this.analyserNode.getByteFrequencyData(this.spectrum);
@@ -75,5 +84,17 @@ const AudioVisualize = {
     return average;
   }
 };
+
+window.addEventListener('click', function() {
+  if (AudioVisualize.firstClick) {
+    AudioVisualize.audioContext.resume()
+    .then(() => {
+      AudioVisualize.firstClick = false;
+    })
+    .catch(error => {
+      console.error('Error during audio context resumption:', error);
+    });
+  }
+});
 
 export { AudioVisualize };
