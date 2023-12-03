@@ -31,7 +31,7 @@ import { AudioVisualize } from "https://cdn.jsdelivr.net/npm/audiovisualize@1.1.
 
 ## Usage
 
-You can create an instance of the **AudioVisualize** object and use its methods to load, analyze, and visualize audio. Use the *loading* method to load an audio file and set up event listeners for loading progress and playback events. Call the *initialize* method to set up the audio nodes for analysis.
+You can create an instance of the **AudioVisualize** object and use its methods to load, analyze, and visualize audio. Use the *loading* method to load an audio file and set up event listeners for loading progress and playback events.
 
 ```javascript
 // Create an instance of the AudioVisualize object.
@@ -66,6 +66,22 @@ const lowFrequency = 20;  // Minimum frequency in Hz
 const highFrequency = 20000;  // Maximum frequency in Hz
 
 const frequencies = av.getFrequencies(lowFrequency, highFrequency); // `frequencies` is an array of frequency data.
+```
+
+To get the average amplitude of the frequency spectrum within a specified frequency range use the getAverageBetweenFrequencies method.
+
+```javascript
+let bass = 0, mid = 0, treble = 0;
+function animation() {
+  if (!av.element.paused) {
+    bass = av.getAverageBetweenFrequencies(20, 250);
+    mid = av.getAverageBetweenFrequencies(250, 1500);
+    treble = av.getAverageBetweenFrequencies(1500, 20000);
+  }
+  // Create your custom audio visualizations here
+  requestAnimationFrame(animation);
+}
+requestAnimationFrame(animation);
 ```
 
 If you want to get the average frequency range over the entire audio track, you can use the getAverageRange method. This method will analyze the audio frame by frame and calculate the average over the specified frequency range.
