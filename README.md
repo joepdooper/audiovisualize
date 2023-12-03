@@ -2,11 +2,7 @@
 
 **AudioVisualize** is a 3 kB JavaScript module that leverages the power of the Web Audio API to analyze and visualize audio in your web applications. It provides an easy-to-use interface for loading audio and extracting the necessary data used to generate visualizations. Check out these [examples](#examples) to learn how to bring your audio data to life with some simple visuals.
 
-
-## Possibilities
-
-- **Real-time Visualization:** Create real-time visualizations of audio, including frequency spectrum analysis.
-- **Customizable:** Adjust the audio analysis parameters to focus on the aspects that matter most to your application.
+> Create real-time visualizations of audio, including frequency spectrum analysis.
 
 ## Installation
 
